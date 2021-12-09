@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str.c                                           :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:37:30 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/09 11:28:07 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:53:02 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void	ft_putnbr_base(unsigned int n, char *base)
+void	ft_putnbr_base(unsigned long n, char *base)
 {
 	char	res;
 
@@ -54,4 +54,18 @@ void	ft_putnbr_base(unsigned int n, char *base)
 		ft_putnbr_base(n / ft_strlen(base), base);
 	res = base[n % ft_strlen(base)];
 	write(1, &res, 1);
+}
+
+void	ft_put_address(void	*p)
+{
+	unsigned long int	addr;
+
+	addr = (unsigned long)p;
+	if (addr == 0)
+	{
+		ft_putstr(NULL_PTR);
+		return ;
+	}
+	ft_putstr("0x");
+	ft_putnbr_base(addr, HEXA_BASE_L);
 }

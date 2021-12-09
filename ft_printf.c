@@ -6,12 +6,17 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:30:45 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/09 12:39:14 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:50:09 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 int	ft_printf(char *str, ...)
 {
@@ -22,7 +27,7 @@ int	ft_printf(char *str, ...)
 	while (*str)
 	{
 		if (*str == '%' && *(str + 1) == 'c')
-			write(1, va_arg(ap, char *), 1);
+			ft_putchar(va_arg(ap, int));
 		if (*str == '%' && *(str + 1) == 's')
 			ft_putstr(va_arg(ap, char *));
 		if (*str == '%' && (*(str + 1) == 'i') || *(str + 1) == 'd')
@@ -33,6 +38,8 @@ int	ft_printf(char *str, ...)
 			ft_putnbr_base(va_arg(ap, unsigned int), HEXA_BASE_L);
 		if (*str == '%' && *(str + 1) == 'X')
 			ft_putnbr_base(va_arg(ap, unsigned int), HEXA_BASE_U);
+		if (*str == '%' && *(str + 1) == 'p')
+			ft_put_address(va_arg(ap, void *));
 		if (*str == '%' && *(str + 1) == '%')
 			write(1, "%", 1);
 		if (*str == '%')
@@ -46,6 +53,8 @@ int	ft_printf(char *str, ...)
 
 int main(int argc, char const *argv[])
 {
-	ft_printf("blq %fl bla %x","456", 456);
+	char str[] = "coucou";
+	ft_printf("brrs = %p\n", 0);
+	printf("brrs = %p\n", 0);
 }
 
