@@ -6,7 +6,7 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:38:08 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/09 17:10:11 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/10 14:49:20 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@
 #  define NULL_PTR "0x0"
 # endif
 
-
-void	ft_putstr(char *str);
-void	ft_putnbr(int n);
+void	ft_putstr(char *str, int *i);
+void	ft_putnbr(int n, int *i);
 size_t	ft_strlen(const char *str);
-void	ft_putnbr_base(unsigned long n, char *base);
-void	ft_put_address(void	*p);
+void	ft_putnbr_base(unsigned long n, char *base, int *i);
+void	ft_put_address(void	*p, int *i);
 
 #endif

@@ -6,19 +6,22 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:37:30 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/09 16:53:02 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:17:55 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *str)
+void	ft_putstr(char *str, int *i)
 {
 	while (*str)
+	{
 		write(1, str++, 1);
+		(*i)++;
+	}
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int n, int *i)
 {
 	unsigned int	nbr;
 	char			res;
@@ -31,9 +34,10 @@ void	ft_putnbr(int n)
 	else
 		nbr = n;
 	if (n / 10)
-		ft_putnbr(nbr / 10);
+		ft_putnbr(nbr / 10, i);
 	res = (nbr % 10) + '0';
 	write(1, &res, 1);
+	(*i)++;
 }
 
 size_t	ft_strlen(const char *str)
@@ -46,26 +50,27 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void	ft_putnbr_base(unsigned long n, char *base)
+void	ft_putnbr_base(unsigned long n, char *base, int *i)
 {
 	char	res;
 
 	if (n / ft_strlen(base))
-		ft_putnbr_base(n / ft_strlen(base), base);
+		ft_putnbr_base(n / ft_strlen(base), base, i);
 	res = base[n % ft_strlen(base)];
 	write(1, &res, 1);
+	(*i)++;
 }
 
-void	ft_put_address(void	*p)
+void	ft_put_address(void	*p, int *i)
 {
 	unsigned long int	addr;
 
 	addr = (unsigned long)p;
 	if (addr == 0)
 	{
-		ft_putstr(NULL_PTR);
+		ft_putstr(NULL_PTR, i);
 		return ;
 	}
-	ft_putstr("0x");
-	ft_putnbr_base(addr, HEXA_BASE_L);
+	ft_putstr("0x", i);
+	ft_putnbr_base(addr, HEXA_BASE_L, i);
 }
