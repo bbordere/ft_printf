@@ -6,7 +6,7 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:37:30 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/10 15:17:55 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:43:45 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	ft_putstr(char *str, int *i)
 {
-	while (*str)
+	if (!str)
 	{
-		write(1, str++, 1);
-		(*i)++;
+		ft_putstr(NUL_STR, i);
+		return ;
 	}
+	write(1, str, ft_strlen(str));
+	(*i) += ft_strlen(str);
 }
 
 void	ft_putnbr(int n, int *i)
@@ -30,6 +32,7 @@ void	ft_putnbr(int n, int *i)
 	{
 		nbr = -n;
 		write(1, "-", 1);
+		(*i)++;
 	}
 	else
 		nbr = n;

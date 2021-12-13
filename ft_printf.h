@@ -6,7 +6,7 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:38:08 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/10 14:49:20 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:41:42 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define HEXA_BASE_U "0123456789ABCDEF"
 # define HEXA_BASE_L "0123456789abcdef"
 # define DECIMAL_BASE "0123456789"
+# define NUL_STR "(null)"
 
 # ifdef __linux__
 #  define NULL_PTR "(nil)"
@@ -34,5 +35,6 @@ void	ft_putnbr(int n, int *i);
 size_t	ft_strlen(const char *str);
 void	ft_putnbr_base(unsigned long n, char *base, int *i);
 void	ft_put_address(void	*p, int *i);
+int		ft_printf(char *str, ...);
 
 #endif

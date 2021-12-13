@@ -6,7 +6,7 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:30:45 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/10 15:47:15 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:40:31 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,15 @@ int	ft_printf(char *str, ...)
 	int	i;
 
 	i = 0;
-	va_start(ap, *str);
+	va_start(ap, str);
 	ft_args(ap, str, &i);
 	va_end(ap);
 	return (i);
 }
-
+/*
 int main(void)
 {
-	char str[] = "coucou";
-	printf("%d\n", printf("%s -- %d -- %p -- %X -- %x -- %c\n", "tete", 123, str, 456, 456, 'j'));
-	ft_printf("%d\n", ft_printf("%s -- %d -- %p -- %X -- %x -- %c\n", "tete", 123, str, 456, 456, 'j'));
+	printf("%d \n",ft_printf("%dxC is the lowest temperature in the universe", -273));
+	printf("%d \n ",printf("%dxC is the lowest temperature in the universe", -273));
 }
-
+*/
