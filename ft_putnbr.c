@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:37:30 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/13 16:43:45 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:21:52 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_putstr(char *str, int *i)
-{
-	if (!str)
-	{
-		ft_putstr(NUL_STR, i);
-		return ;
-	}
-	write(1, str, ft_strlen(str));
-	(*i) += ft_strlen(str);
-}
 
 void	ft_putnbr(int n, int *i)
 {
@@ -39,18 +28,7 @@ void	ft_putnbr(int n, int *i)
 	if (n / 10)
 		ft_putnbr(nbr / 10, i);
 	res = (nbr % 10) + '0';
-	write(1, &res, 1);
-	(*i)++;
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str && str[i])
-		i++;
-	return (i);
+	ft_putchar(res, i);
 }
 
 void	ft_putnbr_base(unsigned long n, char *base, int *i)
@@ -60,8 +38,7 @@ void	ft_putnbr_base(unsigned long n, char *base, int *i)
 	if (n / ft_strlen(base))
 		ft_putnbr_base(n / ft_strlen(base), base, i);
 	res = base[n % ft_strlen(base)];
-	write(1, &res, 1);
-	(*i)++;
+	ft_putchar(res, i);
 }
 
 void	ft_put_address(void	*p, int *i)

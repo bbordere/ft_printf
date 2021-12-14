@@ -2,7 +2,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf.c ft_utils.c
+SRCS = ft_printf.c ft_str.c ft_putnbr.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -10,6 +10,7 @@ NAME = libftprintf.a
 
 $(NAME): $(OBJS)
 	ar rcs ${NAME} ${OBJS}
+	ranlib ${NAME}
 
 all : $(NAME)
 

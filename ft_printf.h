@@ -6,7 +6,7 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:38:08 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/13 16:41:42 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:42:12 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@
 
 # ifdef __linux__
 #  define NULL_PTR "(nil)"
-# endif
 
-# ifdef __APPLE__
+# elif
+#  ifdef __APPLE__
+#   define NULL_PTR "0x0"
+#  endif
+
+# else
 #  define NULL_PTR "0x0"
 # endif
 
@@ -35,6 +39,7 @@ void	ft_putnbr(int n, int *i);
 size_t	ft_strlen(const char *str);
 void	ft_putnbr_base(unsigned long n, char *base, int *i);
 void	ft_put_address(void	*p, int *i);
-int		ft_printf(char *str, ...);
+void	ft_putchar(int c, int *i);
+int		ft_printf(const char *str, ...);
 
 #endif

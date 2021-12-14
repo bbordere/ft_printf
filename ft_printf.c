@@ -6,20 +6,13 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:30:45 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/13 16:40:31 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:47:49 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-void	ft_putchar(int c, int *i)
-{
-	write(1, &c, 1);
-	(*i)++;
-}
-
-void	ft_args(va_list ap, char *str, int *i)
+void	ft_args(va_list ap, const char *str, int *i)
 {
 	while (*str)
 	{
@@ -47,10 +40,10 @@ void	ft_args(va_list ap, char *str, int *i)
 	}
 }
 
-int	ft_printf(char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list		ap;
-	int	i;
+	int			i;
 
 	i = 0;
 	va_start(ap, str);
@@ -58,10 +51,3 @@ int	ft_printf(char *str, ...)
 	va_end(ap);
 	return (i);
 }
-/*
-int main(void)
-{
-	printf("%d \n",ft_printf("%dxC is the lowest temperature in the universe", -273));
-	printf("%d \n ",printf("%dxC is the lowest temperature in the universe", -273));
-}
-*/
