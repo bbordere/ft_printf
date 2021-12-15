@@ -6,7 +6,7 @@
 /*   By: bbordere <bbordere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:37:30 by bbordere          #+#    #+#             */
-/*   Updated: 2021/12/14 15:21:52 by bbordere         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:54:50 by bbordere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	ft_putnbr(int n, int *i)
 
 void	ft_putnbr_base(unsigned long n, char *base, int *i)
 {
-	char	res;
+	size_t	len;
 
-	if (n / ft_strlen(base))
-		ft_putnbr_base(n / ft_strlen(base), base, i);
-	res = base[n % ft_strlen(base)];
-	ft_putchar(res, i);
+	len = ft_strlen(base);
+	if (n / len)
+		ft_putnbr_base(n / len, base, i);
+	ft_putchar(base[n % len], i);
 }
 
 void	ft_put_address(void	*p, int *i)
